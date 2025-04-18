@@ -1,0 +1,18 @@
+name: Release (Fail Immediately)
+
+on:
+  workflow_dispatch:
+    # Only run manually via workflow dispatch
+
+permissions: {}
+
+jobs:
+  release:
+    name: Release (Fail)
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Fail immediately
+        run: |
+          echo "This workflow is configured to fail immediately"
+          exit 1

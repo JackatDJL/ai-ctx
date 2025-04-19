@@ -1,10 +1,10 @@
 {
   "name": "ai-ctx",
-  "version": "0.0.0-dev",
+  "version": "0.0.0.0",
   "type": "module",
   "packageManager": "pnpm@10.8.1",
-  "license": "MIT",
-  "description": "A basic Effect CLI application",
+  "license": "Apache-2.0",
+  "description": "A CLI simplifying building a context of a project for in browser AIs by compiling a project into a single text file",
   "repository": {
     "type": "git",
     "url": "https://github.com/JackatDJL/ai-ctx"
@@ -14,17 +14,18 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "tsup && pnpm copy-package-json",
+    "build": "json2ts src/schema.json -o src/types/config.ts && tsup && pnpm copy-package-json && pnpm copy-readme",
     "build:ts": "tsup",
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist",
     "check": "tsc -b tsconfig.json",
     "lint": "eslint \"**/{src,test,examples,scripts,dtslint}/**/*.{ts,mjs}\"",
     "lint-fix": "pnpm lint --fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "copy-package-json": "tsx scripts/copy-package-json.ts",
-    "changeset-version": "changeset version && node scripts/version.mjs",
-    "changeset-publish": "pnpm build && TEST_DIST= pnpm vitest && changeset publish",
+    "copy-readme": "tsx scripts/copy-readme.ts",
+    "changeset-version": "changeset version",
+    "changeset-publish": "pnpm build && pnpm vitest run && changeset publish",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },
@@ -41,6 +42,7 @@
     "@eslint/eslintrc": "3.1.0",
     "@eslint/js": "9.10.0",
     "@types/node": "^22.5.2",
+    "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@typescript-eslint/parser": "^8.4.0",
     "effect": "latest",
@@ -51,6 +53,7 @@
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
+    "json-schema-to-typescript": "^15.0.4",
     "tsup": "^8.2.4",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
@@ -69,6 +72,7 @@
   "dependencies": {
     "cli-spinners": "^3.2.0",
     "ora": "^8.2.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "prompts": "^2.4.2"
   }
 }

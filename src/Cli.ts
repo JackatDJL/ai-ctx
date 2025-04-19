@@ -2,8 +2,9 @@ import * as Command from "@effect/cli/Command";
 import Version from "./utility/version.js";
 import { Console, Effect } from "effect";
 import ProjectOptions from "./options.js";
-import cliSpinners, { randomSpinner } from "cli-spinners";
+import { randomSpinner } from "cli-spinners";
 import ora from "ora";
+import { init } from "./init.js";
 
 const PO = new ProjectOptions();
 
@@ -13,7 +14,7 @@ const startup = Effect.gen(function* (_) {
   yield* _(Effect.logInfo("Use --version to see the version."));
 });
 
-const file = Command.make("file", PO.fileOptions, (args) => {
+const file = Command.make("file", PO.fileOptions, (_args) => {
   return Effect.gen(function* (_) {
     yield* _(Effect.logInfo("Welcome to the "));
   });
@@ -38,7 +39,6 @@ const animatedAwait = (text: string, duration: number) => {
 
 const test = Command.make("test", {}, () =>
   Effect.gen(function* (_) {
-    yield* _(Console.clear);
     yield* _(startup);
     yield* _(animatedAwait("Loading...", 2000));
     yield* _(Effect.logInfo("Test command executed!"));
@@ -46,7 +46,7 @@ const test = Command.make("test", {}, () =>
 );
 
 const root = Command.make("ai-ctx", {}, () => startup).pipe(
-  Command.withSubcommands([file, workspace, test]),
+  Command.withSubcommands([file, workspace, test, init]),
   Command.withDescription(
     "A CLI build using Effect/cli to simplify building a context of a project for in browser Artificial Intelligences by compiling a project into a single text file",
   ),

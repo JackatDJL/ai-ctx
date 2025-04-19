@@ -1,0 +1,140 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "ai-ctx Global Configuration",
+	"description": "Schema for the global ai-ctx configuration file.",
+	"type": "object",
+	"properties": {
+		"lastGlobalGitignoreSync": {
+			"description": "Timestamp (ISO 8601) of the last successful synchronization of the global gitignore list.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"lastGitignoreCommitId": {
+			"description": "Commit ID of the github/gitignore repository at the time of the last sync.",
+			"type": "string"
+		},
+		"globalGitignoreRepoUrl": {
+			"description": "URL of the git repository to sync global gitignore patterns from.",
+			"type": "string",
+			"default": "https://github.com/github/gitignore.git"
+		},
+		"ignore": {
+			"description": "Settings related to ignoring files and directories.",
+			"type": "object",
+			"properties": {
+				"additionalPatterns": {
+					"description": "List of additional gitignore-like patterns to always ignore globally.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": []
+				},
+				"additionalGitignoreUrls": {
+					"description": "List of URLs pointing to additional .gitignore files to fetch and include.",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"format": "url"
+					},
+					"default": []
+				},
+				"useProjectGitignore": {
+					"description": "Whether to respect project-specific .gitignore files by default.",
+					"type": "boolean",
+					"default": true
+				},
+				"useGlobalGitignore": {
+					"description": "Whether to use the synchronized global gitignore list by default.",
+					"type": "boolean",
+					"default": true
+				},
+				"allowedDotFolders": {
+					"description": "List of dot folders (like .github, .vscode) that should NOT be ignored by default.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						".github",
+						".vscode",
+						".gitlab"
+					]
+				}
+			},
+			"additionalProperties": false,
+			"default": {}
+		},
+		"output": {
+			"description": "Settings related to the output file.",
+			"type": "object",
+			"properties": {
+				"defaultPath": {
+					"description": "Default path for the output file if not specified via CLI.",
+					"type": "string",
+					"default": "./ai-context.txt"
+				},
+				"includeFileHeaders": {
+					"description": "Whether to include file path headers (--- FILE: ... ---) in the output.",
+					"type": "boolean",
+					"default": true
+				},
+				"includeMetadata": {
+					"description": "Whether to include initial metadata (mappings, library notes) in the output.",
+					"type": "boolean",
+					"default": true
+				}
+			},
+			"additionalProperties": false,
+			"default": {}
+		},
+		"fileMode": {
+			"description": "Settings specific to file processing mode (following imports).",
+			"type": "object",
+			"properties": {
+				"defaultImportDepth": {
+					"description": "Default depth for following imports. -1 for infinite.",
+					"type": "integer",
+					"default": -1
+				}
+			},
+			"additionalProperties": false,
+			"default": {}
+		},
+		"performance": {
+			"description": "Settings related to performance.",
+			"type": "object",
+			"properties": {
+				"defaultParallelism": {
+					"description": "Default number of parallel workers (fibers/threads) to use.",
+					"type": "integer",
+					"default": 4
+				}
+			},
+			"additionalProperties": false,
+			"default": {}
+		},
+		"context": {
+			"description": "Settings related to context enhancement and structure.",
+			"type": "object",
+			"properties": {
+				"pathMappings": {
+					"description": "Mapping of aliases (like ~utils) to actual paths.",
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					},
+					"default": {}
+				},
+				"annotateKnownLibraries": {
+					"description": "Whether to try to detect and annotate code from known libraries (e.g., Shadcn UI).",
+					"type": "boolean",
+					"default": true
+				}
+			},
+			"additionalProperties": false,
+			"default": {}
+		}
+	},
+	"additionalProperties": false
+}

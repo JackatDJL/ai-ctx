@@ -1,10 +1,8 @@
-# Effect CLI Application Template
+# AI-CTX CLI
 
-This template provides a solid foundation for building scalable and maintainable command-line applications with Effect. 
+A CLI build using Effect/cli to simplify building a context of a project for in browser Artificial Intelligences by compiling a project into a single text file
 
 ## Running Code
-
-This template leverages [tsx](https://tsx.is) to allow execution of TypeScript files via NodeJS as if they were written in plain JavaScript.
 
 To execute a file with `tsx`:
 
@@ -29,4 +27,3 @@ To test the package:
 ```sh
 pnpm test
 ```
-

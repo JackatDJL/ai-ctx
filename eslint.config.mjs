@@ -60,6 +60,7 @@ export default [
       "object-shorthand": "error",
       "prefer-destructuring": "off",
       "sort-imports": "off",
+      "@effect/dprint": "off",
 
       "no-restricted-syntax": [
         "error",
@@ -113,20 +114,20 @@ export default [
       "@typescript-eslint/no-use-before-define": "off",
       "@typescript-eslint/no-namespace": "off",
 
-      "@effect/dprint": [
-        "error",
-        {
-          config: {
-            indentWidth: 2,
-            lineWidth: 120,
-            semiColons: "asi",
-            quoteStyle: "alwaysDouble",
-            trailingCommas: "never",
-            operatorPosition: "maintain",
-            "arrowFunction.useParentheses": "force"
-          }
-        }
-      ]
+      // "@effect/dprint": [
+      //   "error",
+      //   {
+      //     config: {
+      //       indentWidth: 2,
+      //       lineWidth: 120,
+      //       semiColons: "asi",
+      //       quoteStyle: "alwaysDouble",
+      //       trailingCommas: "never",
+      //       operatorPosition: "maintain",
+      //       "arrowFunction.useParentheses": "force"
+      //     }
+      //   }
+      // ]
     }
   }
 ]

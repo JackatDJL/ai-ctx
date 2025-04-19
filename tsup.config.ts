@@ -6,4 +6,5 @@ export default defineConfig({
   publicDir: true,
   treeshake: "smallest",
   external: ["@parcel/watcher"],
+  format: ["esm"], // Specify ES module format
 });

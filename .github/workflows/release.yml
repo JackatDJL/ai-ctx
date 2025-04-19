@@ -1,18 +1,33 @@
-name: Release (Fail Immediately)
-
+name: Release 🚀
 on:
-  workflow_dispatch:
-    # Only run manually via workflow dispatch
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 permissions: {}
 
 jobs:
   release:
-    name: Release (Fail)
+    name: Release
     runs-on: ubuntu-latest
-    timeout-minutes: 1
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
     steps:
-      - name: Fail immediately
-        run: |
-          echo "This workflow is configured to fail immediately"
-          exit 1
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies 📥
+        uses: ./.github/actions/setup
+
+      - name: Create Release Pull Request or Publish 🚀
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset-version
+          publish: pnpm changeset-publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

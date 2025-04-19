@@ -1,6 +1,6 @@
 {
   "name": "ai-ctx",
-  "version": "0.0.0.0",
+  "version": null,
   "type": "module",
   "packageManager": "pnpm@10.8.1",
   "license": "Apache-2.0",

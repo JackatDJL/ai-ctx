@@ -116,7 +116,10 @@ const initEffect = Effect.gen(function* (_) {
       fs
         .writeFile(
           configFile,
-          new TextEncoder().encode(JSON.stringify(configDefaults)),
+          new TextEncoder().encode(JSON.stringify({
+            "&schema": "https://raw.githubusercontent.com/jackatdjl/ai-ctx/tree/main/global.schema.json",
+            ...configDefaults,
+          })),
         )
         .pipe(
           Effect.catchAll(() =>

@@ -1,6 +1,6 @@
 {
   "name": "ai-ctx",
-  "version": null,
+  "version": "0.0.0",
   "type": "module",
   "packageManager": "pnpm@10.8.1",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "json2ts src/schema.json -o src/types/config.ts && tsup && pnpm copy-package-json && pnpm copy-readme",
+    "build": "pnpm clean && pnpm run:scripts && tsup",
     "build:ts": "tsup",
     "clean": "rimraf dist",
     "check": "tsc -b tsconfig.json",
@@ -22,10 +22,13 @@
     "lint-fix": "pnpm lint --fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "copy-package-json": "tsx scripts/copy-package-json.ts",
-    "copy-readme": "tsx scripts/copy-readme.ts",
-    "changeset-version": "changeset version",
-    "changeset-publish": "pnpm build && pnpm vitest run && changeset publish",
+    "run:scripts": "tsx scripts/run-all.ts",
+    "compile:schema": "tsx scripts/type-schema.ts",
+    "copy:package-json": "tsx scripts/copy-package-json.ts",
+    "copy:readme": "tsx scripts/copy-readme.ts",
+    "changeset": "pnpm build && pnpm vitest run && changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "pnpm build && pnpm vitest run && changeset publish",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },

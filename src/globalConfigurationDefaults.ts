@@ -1,4 +1,4 @@
-import { type AiCtxGlobalConfiguration } from "./types/config.js";
+import { type AiCtxGlobalConfiguration } from "./types/global.js";
 
 /**
  * Default values for the global ai-ctx configuration.

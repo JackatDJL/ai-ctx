@@ -1,4 +1,4 @@
-name: Check
+name: Check 📜
 
 on:
   workflow_dispatch:
@@ -15,40 +15,53 @@ permissions: {}
 
 jobs:
   build:
-    name: Build
+    name: Build 🏗️
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
+
+      - name: Install dependencies 🧰
         uses: ./.github/actions/setup
+
+      - name: Build 🛠️
+        run: pnpm build
 
   types:
-    name: Types
+    name: Types 🇹🇸
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
+
+      - name: Install dependencies 🧰
         uses: ./.github/actions/setup
-      - run: pnpm check
+
+      - name: Type check 🔍
+        run: pnpm check
 
   lint:
-    name: Lint
+    name: Lint 🔎
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
+
+      - name: Install dependencies 🧰
         uses: ./.github/actions/setup
-      - run: pnpm lint
+
+      - name: Eslint 🔍
+        run: pnpm lint
 
   test:
-    name: Test 
+    name: Test 🧪
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
+
+      - name: Install dependencies 🧰
         uses: ./.github/actions/setup
-      - run: pnpm test
+
+      - name: Run tests 🧪
+        run: pnpm test

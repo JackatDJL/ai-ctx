@@ -27,8 +27,8 @@
     "copy:package-json": "tsx scripts/copy-package-json.ts",
     "copy:readme": "tsx scripts/copy-readme.ts",
     "changeset": "pnpm build && pnpm vitest run && changeset",
-    "changeset:version": "changeset version",
-    "changeset:publish": "pnpm build && pnpm vitest run && changeset publish",
+    "changeset-version": "changeset version",
+    "changeset-publish": "pnpm build && pnpm vitest run && changeset publish",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },

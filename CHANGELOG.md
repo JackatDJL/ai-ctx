@@ -1,5 +1,11 @@
 # ai-ctx
 
+## 0.1.1
+
+### Patch Changes
+
+- [`c142e31`](https://github.com/JackatDJL/ai-ctx/commit/c142e31a413cc2660129ad9614ac0323311b31d5) Thanks @JackatDJL! - Implemented Effect Services and Polished ai-ctx init [reset]
+
 ## 0.1.0
 
 ### Minor Changes

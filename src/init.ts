@@ -7,6 +7,7 @@ import {
   doesGlobalConfigExist,
   globalConfigurationPaths,
   GlobalConfigurationPathsReturnType,
+  globalConfigurationReadme,
 } from "./globalConfiguration.js";
 import {
   projectConfigurationDefaults,
@@ -35,7 +36,7 @@ export function initialiseGlobalConfig(
     interaction?.start("Initialising global configuration...");
 
     const fs = yield* FileSystem.FileSystem;
-    const { configFile, configDir } =
+    const { configFile, configDir, readmeFile } =
       cashedGCP ?? (yield* _(globalConfigurationPaths(interaction)));
 
     const version = yield* _(
@@ -100,6 +101,24 @@ export function initialiseGlobalConfig(
             );
           }),
         ),
+    );
+
+    yield* _(
+      fs.writeFile(
+        readmeFile,
+        new TextEncoder().encode(globalConfigurationReadme)
+      ).pipe(
+        Effect.catchAll(() => {
+          Effect.logError("[iGC] Failed to create README file.");
+          return Effect.fail(
+            new InitialisationError({
+              message: "Failed to create README file",
+              cause: InitialisationFailure.FILE_SYSTEM_ERROR,
+              ...(interaction ? { interaction } : {}),
+            }),
+          );
+        }),
+      ),
     );
 
     interaction?.succeed("Global configuration file created.").stop();

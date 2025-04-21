@@ -1,5 +1,11 @@
 # ai-ctx
 
+## 0.1.2
+
+### Patch Changes
+
+- [`2ffa522`](https://github.com/JackatDJL/ai-ctx/commit/2ffa52252ff56c419953a5958a9246138b16b077) Thanks @JackatDJL! - Trying to Fix a node: dynamic import bug
+
 ## 0.1.1
 
 ### Patch Changes

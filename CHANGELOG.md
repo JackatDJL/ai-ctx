@@ -1,15 +1,5 @@
 # ai-ctx
 
-## 0.1.0
-
-### Minor Changes
-
-- [#3](https://github.com/JackatDJL/ai-ctx/pull/3) [`464c4a9`](https://github.com/JackatDJL/ai-ctx/commit/464c4a99769eb0a45e907f47d9ddf06e57e75321) Thanks @JackatDJL! - ai-ctx init and ai-ctx init reset now functional and create ~/.config/ai-ctx/[README.md|config.json] and ./.config/ai-ctx.json
-
-### Patch Changes
-
-- [#3](https://github.com/JackatDJL/ai-ctx/pull/3) [`464c4a9`](https://github.com/JackatDJL/ai-ctx/commit/464c4a99769eb0a45e907f47d9ddf06e57e75321) Thanks @JackatDJL! - Initialisation Partialy Implemented
-
 ## null
 
 ### Patch Changes

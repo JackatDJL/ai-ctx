@@ -1,0 +1,114 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "ai-ctx Project Configuration",
+	"description": "Schema for the project-specific ai-ctx configuration file (e.g., .config/ai-ctx.json). Settings here override or extend global configuration for this project.",
+	"type": "object",
+	"properties": {
+		"&schema": {
+			"description": "URL to the schema for this configuration file.",
+			"type": "string",
+			"format": "uri"
+		},
+		"&version": {
+			"description": "Version information for the configuration file.",
+			"type": "object",
+			"properties": {
+				"version": {
+					"description": "Version number of the configuration file.",
+					"type": "string"
+				},
+				"_tag": {
+					"description": "Tag indicating the type of versioning.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"version",
+				"_tag"
+			],
+			"additionalProperties": false
+		},
+		"ignore": {
+			"description": "Project-specific settings related to ignoring files and directories. These patterns are added to the global and .gitignore rules.",
+			"type": "object",
+			"properties": {
+				"additionalPatterns": {
+					"description": "List of additional gitignore-like patterns to ignore specifically within this project.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": []
+				},
+				"additionalGitignoreUrls": {
+					"description": "List of URLs pointing to additional .gitignore files to fetch and include specifically for this project.",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"format": "url"
+					},
+					"default": []
+				},
+				"allowedDotFolders": {
+					"description": "List of dot folders (like .config, .data) specific to this project that should NOT be ignored, overriding global settings.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": []
+				}
+			},
+			"additionalProperties": false
+		},
+		"output": {
+			"description": "Project-specific settings related to the output file.",
+			"type": "object",
+			"properties": {
+				"defaultPath": {
+					"description": "Default path for the output file within this project if not specified via CLI.",
+					"type": "string"
+				},
+				"includeFileHeaders": {
+					"description": "Whether to include file path headers (--- FILE: ... ---) in the output for this project.",
+					"type": "boolean"
+				},
+				"includeMetadata": {
+					"description": "Whether to include initial metadata (mappings, library notes) in the output for this project.",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"fileMode": {
+			"description": "Project-specific settings for file processing mode (following imports).",
+			"type": "object",
+			"properties": {
+				"defaultImportDepth": {
+					"description": "Default depth for following imports in this project. -1 for infinite.",
+					"type": "integer"
+				}
+			},
+			"additionalProperties": false
+		},
+		"context": {
+			"description": "Project-specific settings related to context enhancement and structure.",
+			"type": "object",
+			"properties": {
+				"pathMappings": {
+					"description": "Mapping of aliases (like ~utils) to actual paths specific to this project.",
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					},
+					"default": {}
+				},
+				"annotateKnownLibraries": {
+					"description": "Whether to try to detect and annotate code from known libraries (e.g., Shadcn UI) for this project.",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
+}

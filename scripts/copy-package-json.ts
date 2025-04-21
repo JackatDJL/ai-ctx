@@ -32,6 +32,10 @@ export const CopyPackageJSON = Effect.gen(function* () {
     JSON.stringify(pkg, null, 2),
   );
   yield* Effect.log("[PACKAGE] Build completed.");
-}).pipe(Effect.provide(NodeContext.layer), Logger.withMinimumLogLevel(LogLevel.Debug), Effect.provide(Logger.pretty));
+}).pipe(
+  Effect.provide(NodeContext.layer),
+  Logger.withMinimumLogLevel(LogLevel.Debug),
+  Effect.provide(Logger.pretty),
+);
 
 Effect.runPromise(CopyPackageJSON).catch(console.error);

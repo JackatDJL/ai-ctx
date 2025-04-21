@@ -1,9 +1,33 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "ai-ctx Global Configuration",
-	"description": "Schema for the global ai-ctx configuration file.",
+	"description": "Schema for the global ai-ctx configuration file. These settings provide the default configuration for all projects.",
 	"type": "object",
 	"properties": {
+		"&schema": {
+			"description": "URL to the schema for this configuration file.",
+			"type": "string",
+			"format": "uri"
+		},
+		"&version": {
+			"description": "Version information for the configuration file.",
+			"type": "object",
+			"properties": {
+				"version": {
+					"description": "Version number of the configuration file.",
+					"type": "string"
+				},
+				"_tag": {
+					"description": "Tag indicating the type of versioning.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"version",
+				"_tag"
+			],
+			"additionalProperties": false
+		},
 		"lastGlobalGitignoreSync": {
 			"description": "Timestamp (ISO 8601) of the last successful synchronization of the global gitignore list.",
 			"type": "string",

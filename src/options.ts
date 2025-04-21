@@ -129,6 +129,41 @@ export default class ProjectOptions {
     ),
   );
 
+  project = Options.boolean("not-project", {
+    ifPresent: false,
+    negationNames: ["project"],
+  }).pipe(
+    Options.withFallbackConfig(
+      Config.boolean("project").pipe(Config.withDefault(false)),
+    ),
+    Options.withDefault(true),
+    Options.withDescription(
+      "Legt fest, ob das Projekt oder die globale Konfiguration verwendet werden soll.",
+    ),
+  );
+
+  global = Options.boolean("global").pipe(
+    Options.withDefault(false),
+    Options.withAlias("g"),
+    Options.withDescription(
+      "Legt fest, ob die Globale oder die projekt Konfiguration verwendet werden soll.",
+    ),
+  );
+
+  reset = Options.boolean("reset").pipe(
+    Options.withDefault(false),
+    Options.withAlias("r"),
+    Options.withDescription(
+      "Setzt die [globale/projektbasierte] Konfiguration zurück.",
+    ),
+  );
+
+  resetAll = Options.boolean("reset-all").pipe(
+    Options.withDefault(false),
+    Options.withAlias("all"),
+    Options.withDescription("Setzt die gesamte Konfiguration zurück."),
+  );
+
   formatingOptions = {
     fileHeaders: this.fileHeaders,
     metadata: this.metadata,
@@ -143,5 +178,20 @@ export default class ProjectOptions {
   workspaceOptions = {
     ...this.defaultOptions,
     ...this.formatingOptions,
+  };
+
+  targetOptions = {
+    global: this.global,
+    project: this.project,
+    resetAll: this.resetAll,
+  };
+
+  initOptions = {
+    ...this.targetOptions,
+    reset: this.reset,
+  };
+
+  resetOptions = {
+    ...this.targetOptions,
   };
 }

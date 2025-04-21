@@ -3,6 +3,23 @@
  */
 export interface AiCtxGlobalConfiguration {
   /**
+   * URL to the schema for this configuration file.
+   */
+  "&schema"?: string;
+  /**
+   * Version information for the configuration file.
+   */
+  "&version"?: {
+    /**
+     * Version number of the configuration file.
+     */
+    version: string;
+    /**
+     * Tag indicating the type of versioning.
+     */
+    _tag: string;
+  };
+  /**
    * Timestamp (ISO 8601) of the last successful synchronization of the global gitignore list.
    */
   lastGlobalGitignoreSync?: string;

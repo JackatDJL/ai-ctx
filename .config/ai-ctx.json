@@ -1,0 +1,19 @@
+{
+  "&schema": "https://raw.githubusercontent.com/JackatDJL/ai-ctx/refs/heads/main/project.schema.json",
+  "&version": {
+    "version": "0.0.0",
+    "_tag": "Version"
+  },
+  "ignore": {
+    "additionalPatterns": [],
+    "additionalGitignoreUrls": [],
+    "allowedDotFolders": []
+  },
+  "output": {},
+  "fileMode": {
+    "defaultImportDepth": -1
+  },
+  "context": {
+    "pathMappings": {}
+  }
+}

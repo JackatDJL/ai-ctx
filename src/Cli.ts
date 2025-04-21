@@ -1,8 +1,9 @@
 import * as Command from "@effect/cli/Command";
-import Version from "./utility/version.js";
+import Version, { VersionLive } from "./utility/version.js";
 import { Console, Effect } from "effect";
 import ProjectOptions from "./options.js";
 import { randomSpinner } from "cli-spinners";
+import * as NodeContext from "@effect/platform-node/NodeContext";
 import ora from "ora";
 import { init } from "./init.js";
 
@@ -54,5 +55,17 @@ const root = Command.make("ai-ctx", {}, () => startup).pipe(
 
 export const run = Command.run(root, {
   name: "AI Context",
-  version: (await Version.create()).version,
+  version: await Effect.runPromise(Effect.gen(function* (_) {
+    const vS = yield* _(Version)
+
+    return yield* _(vS.version().pipe(
+      Effect.catchAll(() => {
+        Effect.logError("Failed to get version");
+        return Effect.succeed("unknown");
+      })
+    ));
+  }).pipe(
+    Effect.provide(NodeContext.layer),
+    Effect.provide(VersionLive),
+  )),
 });

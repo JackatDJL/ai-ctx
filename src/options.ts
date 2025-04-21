@@ -2,6 +2,14 @@ import { Options } from "@effect/cli";
 import { Config } from "effect";
 
 export default class ProjectOptions {
+  yes = Options.boolean("yes").pipe(
+    Options.withDefault(false),
+    Options.withAlias("y"),
+    Options.withDescription(
+      "Bestätigt alle Eingabeaufforderungen mit 'ja'. Dies ist nützlich, wenn Sie Skripte automatisieren möchten.",
+    ),
+  );
+
   srcPath = Options.file("src-file").pipe(
     Options.withAlias("sf"),
     Options.orElseEither(
@@ -181,6 +189,7 @@ export default class ProjectOptions {
   };
 
   targetOptions = {
+    yes: this.yes,
     global: this.global,
     project: this.project,
     resetAll: this.resetAll,

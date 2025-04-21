@@ -1,5 +1,5 @@
 /**
- * Schema for the global ai-ctx configuration file.
+ * Schema for the global ai-ctx configuration file. These settings provide the default configuration for all projects.
  */
 export interface AiCtxGlobalConfiguration {
   /**

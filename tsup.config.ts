@@ -2,7 +2,7 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["src/bin.ts"],
-  clean: true,
+  clean: false,
   publicDir: true,
   treeshake: "smallest",
   external: ["@parcel/watcher"],

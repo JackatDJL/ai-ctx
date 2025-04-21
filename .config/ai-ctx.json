@@ -1,9 +1,6 @@
 {
   "&schema": "https://raw.githubusercontent.com/JackatDJL/ai-ctx/refs/heads/main/project.schema.json",
-  "&version": {
-    "version": "0.0.0",
-    "_tag": "Version"
-  },
+  "&version": "0.0.0",
   "ignore": {
     "additionalPatterns": [],
     "additionalGitignoreUrls": [],

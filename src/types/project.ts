@@ -1,5 +1,5 @@
 /**
- * Schema for the project-specific ai-ctx configuration file (e.g., .ai-ctx.json). Settings here override or extend global configuration for this project.
+ * Schema for the project-specific ai-ctx configuration file (e.g., .config/ai-ctx.json). Settings here override or extend global configuration for this project.
  */
 export interface AiCtxProjectConfiguration {
   /**

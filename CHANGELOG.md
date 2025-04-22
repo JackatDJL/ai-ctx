@@ -1,5 +1,11 @@
 # ai-ctx
 
+## 0.1.3
+
+### Patch Changes
+
+- [`abe0f5b`](https://github.com/JackatDJL/ai-ctx/commit/abe0f5be11235007ce2a9b241652b1aab0ac4736) Thanks @JackatDJL! - Fixed node:process and yaml errors
+
 ## 0.1.2
 
 ### Patch Changes

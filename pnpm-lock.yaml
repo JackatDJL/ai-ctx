@@ -25,6 +25,9 @@ importers:
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
+      yaml:
+        specifier: ^2.7.1
+        version: 2.7.1
     devDependencies:
       '@changesets/changelog-github':
         specifier: ^0.5.0

@@ -5,6 +5,6 @@ export default defineConfig({
   clean: false,
   publicDir: true,
   treeshake: "smallest",
-  external: ["@parcel/watcher"],
-  format: ["esm"], // Specify ES module format
+  external: ["@parcel/watcher", "node:process", "yaml"], // Added 'yaml' to external
+  format: ["esm"],
 });
